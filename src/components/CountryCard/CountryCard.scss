@@ -1,0 +1,24 @@
+.card{
+border-radius: 3px;
+  height: fit-content;
+  //width: 50%;
+  box-shadow: 0 5px 5px rgba(0,0,0,.5);
+
+
+  &__image{
+    width: 100%;
+    border-radius: 3px;
+  }
+
+  &__details{
+    padding: 15px 30px;
+
+&--name h4{
+  font-weight: bolder;
+}
+  }
+}
+
+.card:hover{
+  transform: translateY(10px);
+}

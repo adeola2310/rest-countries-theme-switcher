@@ -1,0 +1,64 @@
+@import "general";
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+//@import "font-awesome";
+
+
+body{
+  background-color: $very-dark-blue-bg;
+  color: $white-text;
+  font-family: 'Open Sans', sans-serif;
+}
+
+input{
+  background-color: $very-dark-blue-bg;
+  color: $white-text;
+}
+
+button{
+  background-color: $very-dark-blue-bg;
+  color: $white-text;
+}
+input::placeholder{
+  color: $white-text;
+
+}
+select{
+  background-color: $very-dark-blue-bg;
+  color: $white-text;
+
+}
+
+a{
+  text-decoration: none;
+  color: $white-text;
+}
+
+.light{
+  background-color: $white-bg;
+  color: $very-dark-blue-text;
+  input{
+    background-color: $white-text;
+    color: $very-dark-blue-bg;
+  }
+
+  button{
+    background-color: $white-text;
+    color: $very-dark-blue-bg;
+  }
+  input::placeholder{
+    color: $very-dark-blue-bg;
+
+
+  }
+  select{
+    color: $very-dark-blue-bg;
+    background-color: $white-text;
+
+  }
+
+  a{
+    text-decoration: none;
+    color: $very-dark-blue-bg;
+  }
+
+}

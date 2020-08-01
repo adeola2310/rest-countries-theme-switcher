@@ -1,0 +1,75 @@
+.search-filter {
+  display: flex;
+  justify-content: space-between;
+  padding: 65px 50px;
+
+  input {
+    border-radius: 5px;
+    outline: none;
+    padding: 25px 20px;
+    width: 25%;
+    border: none;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, .2);
+
+  }
+
+  input::placeholder {
+    font-size: 15px;
+  }
+
+  select {
+    border-radius: 5px;
+    width: 15%;
+    border: none;
+    outline: none;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, .5);
+
+  }
+}
+
+.countries {
+  display: grid;
+  padding: 45px 90px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-column-gap: 10px;
+  grid-row-gap: 35px;
+}
+
+
+@media screen and (max-width: 600px) {
+  .search-filter {
+    display: flex;
+    flex-direction: column;
+    padding: 30px 20px;
+
+
+    input{
+      width: 90%;
+    }
+    input::placeholder{
+      font-size: 12px;
+    }
+
+    select{
+      width: 60%;
+      padding: 25px 20px;
+      font-size: 12px;
+      margin-top: 30px;
+    }
+  }
+
+  .countries{
+    display: grid;
+    grid-template-columns: auto;
+    padding: 30px;
+  }
+}
+
+
+@media screen and (min-width: 600px) and (max-width: 1200px) {
+  .countries{
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    padding: 30px;
+  }
+}
