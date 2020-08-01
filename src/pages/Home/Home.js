@@ -6,35 +6,47 @@ import {connect} from "react-redux";
 import getAllCountriesThunk from "../../redux/actions/fetchAllCountries";
 import Loader from "../../components/Loader/Loader";
 import getCountrybyNameThunk from "../../redux/actions/fetchCountryByName";
-import getSearchedCountryThunk from "../../redux/actions/fetchSearchedCountries";
 
 
 
-const Home = ({getAllCountriesThunk, countries, country, getSearchedCountryThunk }) => {
+const Home = ({getAllCountriesThunk, countries }) => {
 
     const [isLoading, setIsLoading] = useState(false)
-    const [searchText, setSearchText] = useState('')
+    const [searchText, setSearchText] = useState('');
+    const [searchedCountry, setSearchedCountry] = useState([])
 
     const fetchCountries = async ()=>{
         await getAllCountriesThunk()
     }
 
-    const fetchSearchedCountry = async (searchTerm)=>{
-        setSearchText(searchTerm);
-        await getSearchedCountryThunk(searchTerm)
-    }
 
+const performSearch = (searchText) =>{
+        const searchedData = countries?.data.filter((ele)=>{
+            let name = ele.name.toLowerCase()
+            return name.includes(searchText.toLowerCase())
+        })
+    setSearchedCountry(searchedData);
+    return searchedData
+
+}
+
+
+const handleChange = (e)=>{
+    const searchTerm = e.target.value
+    setSearchText(searchTerm);
+    performSearch(searchTerm)
+}
 
 
     useEffect(()=>{
         Promise.all([
             fetchCountries(),
-            fetchSearchedCountry()
     ])
     }, [])
 
 
-    const countryData = searchText ? country : countries
+    const countryData = searchText ? searchedCountry : countries?.data
+
 
     return (
         <React.Fragment>
@@ -44,21 +56,27 @@ const Home = ({getAllCountriesThunk, countries, country, getSearchedCountryThunk
                  type="text"
                  placeholder="Search Country.."
                  value={searchText}
-                 onChange={fetchSearchedCountry}
+                 onChange={handleChange}
              />
 
              <select>
                  <option>Filter by Region</option>
+                 <option>Filter by Region</option>
+                 <option>Filter by Region</option>
+                 <option>Filter by Region</option>
              </select>
             </div>
 
+
+
             <div className="countries">
-                {isLoading ? (<Loader/>):
-                    (
-                        countryData && countryData?.data?.map((country, index)=>(
+                {isLoading ? <Loader/> :
+
+                        countryData && countryData?.map((country, index)=>(
 
                             <Link to={`${country.name}`}>
                                 <CountryCard
+                                    key={country.name}
                                     name={country.name}
                                     image={country.flag}
                                     population={country.population}
@@ -67,7 +85,6 @@ const Home = ({getAllCountriesThunk, countries, country, getSearchedCountryThunk
                                 />
                             </Link>
                         ))
-                    )
 
                 }
 
@@ -81,9 +98,8 @@ const Home = ({getAllCountriesThunk, countries, country, getSearchedCountryThunk
 
 const mapStateToProps = state => ({
     countries: state.countries.countries,
-    country: state.countries.searchedCountry
 
 });
 
-export default connect(mapStateToProps, {getAllCountriesThunk, getSearchedCountryThunk,
+export default connect(mapStateToProps, {getAllCountriesThunk,
     getCountrybyNameThunk})(Home);
