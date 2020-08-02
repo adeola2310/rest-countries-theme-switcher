@@ -42,9 +42,29 @@
       //grid-row-gap: 5px;
 
     }
+    &--border{
+      margin-top: 30px;
+    }
   }
 }
 
+.border{
+  padding: 20px 0px;
+}
+.btn{
+  display: inline-flex;
+  flex-direction: row;
+  margin-right: 10px;
+  border-radius: 2px;
+  border: 1px solid #fff;
+  padding: 5px 10px;
+  flex-wrap: wrap;
+}
+
+
+.btn{
+
+}
 @media screen and (max-width: 600px){
 
   .button{

@@ -1,13 +1,19 @@
-import React from 'react';
+import React, {useState} from 'react';
 import "./CountryCard.scss"
 import {formatNumber} from "../../lib/lib";
+import Loader from "../Loader/Loader";
 
 
 const CountryCard = ({name, population, image, region, capital}) => {
+
+    const [isLoading, setIsLoading] = useState(false)
     return (
         <React.Fragment>
             <div className="card">
-                <img src={image} alt="country" className="card__image"/>
+                {isLoading ? <Loader/> :
+                    <img src={image} alt="country" className="card__image"/>
+
+                }
               <div className="card__details">
                <div className="card__details--name">
                    <h4> {name}</h4>

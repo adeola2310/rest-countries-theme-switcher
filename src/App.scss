@@ -10,6 +10,10 @@ body{
   //transition: ease-in;
 }
 
+//img > header__content--toggle{
+//  fill: $white-text;
+//}
+
 input{
   background-color: $very-dark-blue-bg;
   color: $white-text;
@@ -34,7 +38,10 @@ a{
   color: $white-text;
 }
 
-
+span > btn{
+  background-color: $very-dark-blue-bg;
+  color: $white-text;
+}
 
 .light{
   background-color: $white-bg;
@@ -57,6 +64,11 @@ a{
     color: $very-dark-blue-bg;
     background-color: $white-text;
 
+  }
+
+  span > btn{
+    color: $very-dark-blue-bg;
+    background-color: $white-text;
   }
 
   a{

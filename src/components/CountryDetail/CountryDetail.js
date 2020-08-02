@@ -47,10 +47,28 @@ const lang =  count?.data[0]?.languages.map((language, i)=>(
                       <p> <b>Top Level Domain</b>: {count?.data[0].topLevelDomain[0]}</p>
                       <p> <b>Languages</b>: {lang?.join(' , ')}
                       </p>
-
                   </div>
+                  <div className="details__name--border">
+                      <h4>Border Countries:
+                          {
+                              count?.data[0].borders.length === 0 &&
+                                  <p> No Border Country</p>
+                          }
+
+                          {count?.data[0].borders.length > 0 &&
+                          count?.data[0].borders.map((border, i)=>(
+                              <span className="btn">{border}</span>
+
+                          ))
+                          }
+                      </h4>
+                  </div>
+
+
               </div>
             </div>
+
+
         </React.Fragment>
 
     )
