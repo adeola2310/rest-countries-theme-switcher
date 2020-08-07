@@ -14,8 +14,8 @@ const Home = ({getAllCountriesThunk, countries }) => {
     const [isLoading, setIsLoading] = useState(false)
     const [searchText, setSearchText] = useState('');
     const [searchedCountry, setSearchedCountry] = useState([])
-    const [region, setRegion] = useState('')
-    const [filteredCountries, setFilteredCountries] = useState([])
+    const [region, setRegion] = useState('');
+    const [filteredCountries, setFilteredCountries] = useState([]);
 
     const fetchCountries = async ()=>{
         setIsLoading(true)
@@ -41,51 +41,22 @@ const handleChange = (e)=>{
     performSearch(searchTerm)
 }
 
-// const filterCountry = (region)=>{
-//
-// }
-//
-// const filterCountry = (e)=>{
-//       setRegion(e.target.textContent.toLowerCase())
-// }
+
+const performFilter = (region)=>{
+    const filteredCountry = countries?.data?.filter((ele)=> {
+        let count = ele.region.toLowerCase()
+        return count.includes(region.toLowerCase())
+    })
+    setFilteredCountries(filteredCountry)
+    return filteredCountry
+}
 
 
-    // useEffect(() => {
-    //     if (region !== '' && countries?.data.length !== 0) {
-    //         setFilteredCountries(
-    //             countries?.data.filter(({ region }) => {
-    //                 return region.toLowerCase() === region
-    //             })
-    //         )
-    //     }
-    // }, [ region])
-
-  const regions = [
-        {
-            name: 'Africa',
-            value: 'africa',
-        },
-        {
-            name: 'America',
-            value: 'america',
-        },
-        {
-            name: 'Asia',
-            value: 'asia',
-        },
-      {
-          name: 'Europe',
-          value: 'europe',
-      },
-      {
-          name: 'Oceania',
-          value: 'oceania',
-      },
-      {
-          name: 'Polar',
-          value: 'polar',
-      }
-    ]
+const handleFilter = (e)=>{
+    const region = e.target.value
+    setRegion(region);
+    performFilter(region)
+}
 
 
     useEffect(()=>{
@@ -95,7 +66,10 @@ const handleChange = (e)=>{
     }, [])
 
 
-    const countryData = searchText ? searchedCountry : countries?.data
+
+    const countryData = searchText ? searchedCountry : region ? filteredCountries : countries?.data
+
+
 
 
 
@@ -113,13 +87,20 @@ const handleChange = (e)=>{
 
              <select
                  value={region}
+                 onChange={handleFilter}
              >
                  <option>Filter by Region</option>
-                     {
-                         regions.map((reg, i)=>(
-                             <option key={reg.value} value={reg.value}>{reg.name}</option>
-                         ))
-                     }
+                     {/*{*/}
+                     {/*    regions.map((reg, i)=>(*/}
+                     {/*        <option key={reg.value} value={reg.value}>{reg.name}</option>*/}
+                     {/*    ))*/}
+                     {/*}*/}
+                     <option value="Asia"> Asia</option>
+                     <option value="Africa"> Africa</option>
+                     <option value="America"> America</option>
+                     <option value="Oceania"> Oceania</option>
+                     <option value="Europe"> Europe</option>
+                     <option value="Polar"> Polar</option>
 
              </select>
             </div>
