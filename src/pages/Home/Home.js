@@ -86,15 +86,11 @@ const handleFilter = (e)=>{
              />
 
              <select
+                 placeholder="filter"
                  value={region}
                  onChange={handleFilter}
              >
-                 <option>Filter by Region</option>
-                     {/*{*/}
-                     {/*    regions.map((reg, i)=>(*/}
-                     {/*        <option key={reg.value} value={reg.value}>{reg.name}</option>*/}
-                     {/*    ))*/}
-                     {/*}*/}
+                 <option value="">Filter by Region</option>
                      <option value="Asia"> Asia</option>
                      <option value="Africa"> Africa</option>
                      <option value="America"> America</option>

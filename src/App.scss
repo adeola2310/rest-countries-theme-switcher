@@ -32,6 +32,15 @@ select{
   color: $white-text;
 
 }
+select::placeholder{
+  padding: 10px 20px;
+}
+
+option{
+  width: 50%;
+  background-color: $very-dark-blue-bg;
+  color: $white-text;
+}
 
 a{
   text-decoration: none;
